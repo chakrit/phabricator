@@ -4,6 +4,8 @@
 
 Minimal image to spin up phabricator in a docker container.
 
+To spin up phabricator:
+
 ```
 docker run --restart=always --name phabricator -d \
   -e APACHE_SERVER_NAME=phabricator.example.com \
@@ -13,6 +15,23 @@ docker run --restart=always --name phabricator -d \
   -e PHABRICATOR_MYSQL_USER=root \
   -e PHABRICATOR_MYSQL_PASS=change_me_dont_deploy_this \
   chakrit/phabricator
+```
+
+Visit the site and follow the on-screen instructions. Use `docker exec -it phabricator
+/bin/sh` to get a console and use the scripts in the `bin/` folder.
+
+To spin up the daemon, just use the same invocation but supply path to the `phd` command:
+
+```
+docker run --restart=always --name phabricator -d \
+  -e APACHE_SERVER_NAME=phabricator.example.com \
+  -e PHABRICATOR_BASE_URI=http://phabricator.example.com \
+  -e PHABRICATOR_MYSQL_HOST=mysql \
+  -e PHABRICATOR_MYSQL_PORT=3306 \
+  -e PHABRICATOR_MYSQL_USER=root \
+  -e PHABRICATOR_MYSQL_PASS=change_me_dont_deploy_this \
+  chakrit/phabricator \
+  /p/phabricator/bin/phd start
 ```
 
 ### ENV VARS
