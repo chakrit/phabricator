@@ -3,6 +3,7 @@ FROM alpine:edge
 # base system
 RUN apk add --no-cache \
   git \
+  git-daemon \
   ca-certificates \
   gettext \
   procps
