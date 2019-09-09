@@ -18,13 +18,7 @@ services:
         target: /p/phabricator/conf/local
   daemon:
     build: .
-    environment:
-      - "APACHE_SERVER_NAME=phabricator.local"
-      - "PHABRICATOR_BASE_URI=http://phabricator.local:8088"
-      - "PHABRICATOR_MYSQL_HOST=mysql"
-      - "PHABRICATOR_MYSQL_PORT=3306"
-      - "PHABRICATOR_MYSQL_USER=root"
-      - "PHABRICATOR_MYSQL_PASS=change_me_dont_deploy_this"
+    command: ./daemon.sh
     volumes:
       - type: bind
         source: ./conf
