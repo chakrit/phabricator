@@ -8,6 +8,7 @@ To spin up phabricator:
 
 ```
 docker run --restart=always --name phabricator -d \
+  -v /mnt/phabricator/config:/p/phabricator/conf/local \
   -e APACHE_SERVER_NAME=phabricator.example.com \
   -e PHABRICATOR_BASE_URI=http://phabricator.example.com \
   -e PHABRICATOR_MYSQL_HOST=mysql \
@@ -20,10 +21,11 @@ docker run --restart=always --name phabricator -d \
 Visit the site and follow the on-screen instructions. Use `docker exec -it phabricator
 /bin/sh` to get a console and use the scripts in the `bin/` folder.
 
-To spin up the daemon, just use the same invocation but supply path to the `phd` command:
+To spin up the daemon, use the `daemon.sh` script:
 
 ```
 docker run --restart=always --name phabricator -d \
+  -v /mnt/phabricator/config:/p/phabricator/conf/local \
   -e APACHE_SERVER_NAME=phabricator.example.com \
   -e PHABRICATOR_BASE_URI=http://phabricator.example.com \
   -e PHABRICATOR_MYSQL_HOST=mysql \
@@ -31,8 +33,11 @@ docker run --restart=always --name phabricator -d \
   -e PHABRICATOR_MYSQL_USER=root \
   -e PHABRICATOR_MYSQL_PASS=change_me_dont_deploy_this \
   chakrit/phabricator \
-  /p/phabricator/bin/phd start
+  ./daemon.sh
 ```
+
+Alternatively, you can also run individual daemons in their own containers by manually
+using `phd debug DaemonName`.
 
 ### ENV VARS
 

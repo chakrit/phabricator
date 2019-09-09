@@ -39,6 +39,7 @@ RUN git clone git://github.com/phacility/libphutil && \
 ADD preamble.php           /p/phabricator/support/preamble.php
 ADD phabricator-httpd.conf /etc/apache2/conf.d/phabricator.conf
 ADD entrypoint.sh          /p/entrypoint.sh
+ADD daemon.sh              /p/daemon.sh
 
 # entrypoint
 ENV PATH "/p/phabricator/bin:$PATH"
