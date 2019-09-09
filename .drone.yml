@@ -1,0 +1,27 @@
+---
+kind: pipeline
+type: docker
+name: default
+
+platform:
+  os: linux
+  arch: amd64
+
+clone:
+  depth: 1
+
+steps:
+- name: build
+  image: plugins/docker
+  settings:
+    password:
+      from_secret: DOCKER_PASSWORD
+    repo: chakrit/phabricator
+    username:
+      from_secret: DOCKER_USERNAME
+
+---
+kind: signature
+hmac: 397c28bb3c97f6ba90314f6ad50f2f3914d3e0bdcf33a2f6a1df376beff1ec59
+
+...
