@@ -24,4 +24,6 @@ RUN apk add --no-cache \
 
 ADD phabricator-httpd.conf /etc/apache2/conf.d/phabricator.conf
 ADD entrypoint.sh /p/entrypoint.sh
+
+ENV PATH "/p/phabricator/bin:/bin:/usr/bin:/usr/local/bin"
 ENTRYPOINT ["./entrypoint.sh"]
