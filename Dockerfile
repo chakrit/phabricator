@@ -45,5 +45,5 @@ ADD entrypoint.sh          /p/entrypoint.sh
 ADD daemon.sh              /p/daemon.sh
 
 # entrypoint
-ENV PATH "/p/phabricator/bin:$PATH"
+ENV PATH "/p/phabricator/bin:/usr/libexec/git-core:$PATH"
 ENTRYPOINT ["./entrypoint.sh"]
