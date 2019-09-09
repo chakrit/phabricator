@@ -20,9 +20,11 @@ RUN apk add --no-cache \
   php7-json \
   php7-mbstring \
   php7-mysqli \
+  php7-opcache \
   php7-openssl \
   php7-pcntl \
   php7-pear \
+  php7-pecl-apcu \
   php7-posix \
   php7-zip \
   python3
