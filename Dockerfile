@@ -19,7 +19,8 @@ RUN apk add --no-cache \
   php7-mysqli \
   php7-openssl \
   php7-pcntl \
-  php7-pear
+  php7-pear \
+  php7-posix
 
 ADD phabricator-httpd.conf /etc/apache2/conf.d/phabricator.conf
 ADD entrypoint.sh /p/entrypoint.sh
