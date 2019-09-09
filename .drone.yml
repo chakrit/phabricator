@@ -19,9 +19,12 @@ steps:
     repo: chakrit/phabricator
     username:
       from_secret: DOCKER_USERNAME
+  when:
+    branch:
+    - master
 
 ---
 kind: signature
-hmac: 397c28bb3c97f6ba90314f6ad50f2f3914d3e0bdcf33a2f6a1df376beff1ec59
+hmac: b12b89f972714bddb8720c17156295f1bb924be8240bf253d6090521d9bfab48
 
 ...
