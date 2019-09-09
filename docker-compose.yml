@@ -12,6 +12,15 @@ services:
       - "PHABRICATOR_MYSQL_PORT=3306"
       - "PHABRICATOR_MYSQL_USER=root"
       - "PHABRICATOR_MYSQL_PASS=change_me_dont_deploy_this"
+  daemon:
+    build: .
+    environment:
+      - "APACHE_SERVER_NAME=phabricator.local"
+      - "PHABRICATOR_BASE_URI=http://phabricator.local:8088"
+      - "PHABRICATOR_MYSQL_HOST=mysql"
+      - "PHABRICATOR_MYSQL_PORT=3306"
+      - "PHABRICATOR_MYSQL_USER=root"
+      - "PHABRICATOR_MYSQL_PASS=change_me_dont_deploy_this"
   mysql:
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
