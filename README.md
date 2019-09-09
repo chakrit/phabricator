@@ -1,5 +1,7 @@
 # PHABRICATOR in Docker
 
+[![Build Status](https://cloud.drone.io/api/badges/chakrit/phabricator/status.svg)](https://cloud.drone.io/chakrit/phabricator)
+
 Minimal image to spin up phabricator in a docker container.
 
 ```
