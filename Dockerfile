@@ -18,6 +18,7 @@ RUN apk add --no-cache \
   php7-mbstring \
   php7-mysqli \
   php7-openssl \
+  php7-pcntl \
   php7-pear
 
 ADD phabricator-httpd.conf /etc/apache2/conf.d/phabricator.conf
