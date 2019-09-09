@@ -15,8 +15,8 @@ do
   for P in $(allphps)
   do
     echo "waiting for $P"
-    tail --pid="$P" -f /dev/null # wait for $P to exit
+    lsof -p "$P" +r &>/dev/null
   done
 
-  sleep 3
+  sleep 30
 done
