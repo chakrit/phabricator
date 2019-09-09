@@ -26,5 +26,5 @@ ADD preamble.php           /p/phabricator/support/preamble.php
 ADD phabricator-httpd.conf /etc/apache2/conf.d/phabricator.conf
 ADD entrypoint.sh          /p/entrypoint.sh
 
-ENV PATH "/p/phabricator/bin:/bin:/usr/bin:/usr/local/bin"
+ENV PATH "/p/phabricator/bin:$PATH"
 ENTRYPOINT ["./entrypoint.sh"]

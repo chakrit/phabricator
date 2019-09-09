@@ -12,6 +12,10 @@ services:
       - "PHABRICATOR_MYSQL_PORT=3306"
       - "PHABRICATOR_MYSQL_USER=root"
       - "PHABRICATOR_MYSQL_PASS=change_me_dont_deploy_this"
+    volumes:
+      - type: bind
+        source: ./conf
+        target: /p/phabricator/conf/local
   daemon:
     build: .
     environment:
@@ -21,6 +25,10 @@ services:
       - "PHABRICATOR_MYSQL_PORT=3306"
       - "PHABRICATOR_MYSQL_USER=root"
       - "PHABRICATOR_MYSQL_PASS=change_me_dont_deploy_this"
+    volumes:
+      - type: bind
+        source: ./conf
+        target: /p/phabricator/conf/local
   mysql:
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
