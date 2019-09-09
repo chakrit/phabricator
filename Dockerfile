@@ -7,7 +7,7 @@ RUN apk add --no-cache \
   gettext \
   procps
 
-# php stuff
+# php + app runtime
 RUN apk add --no-cache \
   apache2 \
   apache2-ctl \
@@ -15,13 +15,18 @@ RUN apk add --no-cache \
   php7-apache2 \
   php7-ctype \
   php7-curl \
+  php7-fileinfo \
+  php7-gd \
   php7-json \
   php7-mbstring \
   php7-mysqli \
   php7-openssl \
   php7-pcntl \
   php7-pear \
-  php7-posix
+  php7-posix \
+  php7-zip \
+  python3
+RUN pip3 install -q pygments
 
 # the app
 RUN mkdir /p
