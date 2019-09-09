@@ -15,5 +15,11 @@ checkconfig mysql.port           "$PHABRICATOR_MYSQL_PORT"
 checkconfig mysql.user           "$PHABRICATOR_MYSQL_USER"
 checkconfig mysql.pass           "$PHABRICATOR_MYSQL_PASS"
 
-envsubst < /etc/apache2/conf.d/phabricator.conf > /etc/apache2/conf.d/phabricator.conf
-apachectl -D FOREGROUND
+envsubst < /etc/apache2/conf.d/phabricator.conf > /tmp/phab.conf
+mv /tmp/phab.conf /etc/apache2/conf.d/phabricator.conf
+
+if [ -z "$*" ]; then
+  apachectl -D FOREGROUND
+else
+  "$@"
+fi

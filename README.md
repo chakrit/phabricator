@@ -17,7 +17,7 @@ docker run --restart=always --name phabricator -d \
 
 ### ENV VARS
 
-These are applied to phabricator/apache via the init.sh startup script:
+These are applied to phabricator/apache via the entrypoint.sh startup script:
 
 ```
 APACHE_SERVER_NAME

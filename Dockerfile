@@ -21,5 +21,5 @@ RUN apk add --no-cache \
   php7-pear
 
 ADD phabricator-httpd.conf /etc/apache2/conf.d/phabricator.conf
-ADD init.sh /p/init.sh
-CMD ["./init.sh"]
+ADD entrypoint.sh /p/entrypoint.sh
+ENTRYPOINT ["./entrypoint.sh"]
