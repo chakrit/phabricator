@@ -1,0 +1,6 @@
+.dockerignore
+.drone.yml
+.git
+compose.sh
+docker-compose.yml
+drone.sh
