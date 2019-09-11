@@ -16,6 +16,9 @@ services:
       - type: bind
         source: ./conf
         target: /p/phabricator/conf/local
+      - type: bind
+        source: ./repo
+        target: /var/repo
   daemon:
     build: .
     command: /p/daemon.sh
@@ -23,8 +26,15 @@ services:
       - type: bind
         source: ./conf
         target: /p/phabricator/conf/local
+      - type: bind
+        source: ./repo
+        target: /var/repo
   mysql:
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
     environment:
       - "MYSQL_ROOT_PASSWORD=change_me_dont_deploy_this"
+    volumes:
+      - type: bind
+        source: ./mysql
+        target: /var/lib/mysql
