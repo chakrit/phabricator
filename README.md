@@ -9,6 +9,7 @@ To spin up phabricator:
 ```
 docker run --restart=always --name phabricator -d \
   -v /mnt/phabricator/config:/p/phabricator/conf/local \
+  -v /mnt/phabricator/repo:/var/repo \
   -e APACHE_SERVER_NAME=phabricator.example.com \
   -e PHABRICATOR_BASE_URI=http://phabricator.example.com \
   -e PHABRICATOR_MYSQL_HOST=mysql \
@@ -26,6 +27,7 @@ To spin up the daemon, use the `daemon.sh` script:
 ```
 docker run --restart=always --name phabricator -d \
   -v /mnt/phabricator/config:/p/phabricator/conf/local \
+  -v /mnt/phabricator/repo:/var/repo \
   -e APACHE_SERVER_NAME=phabricator.example.com \
   -e PHABRICATOR_BASE_URI=http://phabricator.example.com \
   -e PHABRICATOR_MYSQL_HOST=mysql \
