@@ -54,3 +54,32 @@ PHABRICATOR_MYSQL_PASS
 
 The names should be self-explanatory.
 
+
+### CAVEATS
+
+* Most (if not all) configurations which can be done after booting up are left untouched
+  to simplify the image construction process. The first thing you need to do, on a clean
+  installation, for example is to initialize the MySQL storage and the authentication
+  provider:
+
+  ```
+  docker exec -it phabricator /bin/sh
+
+  # inside container:
+  $ cd /p/phabricator/bin
+  $ ./storage upgrade
+  $ ./auth unlock # set it up via the GUI, then come back here to re-lock it.
+  $ ./config set diffusion.allow-http-auth true
+  ```
+
+* The image contains a `sudoers` file which allows the `apache` user inside the container
+  to use sudo thereby allowing Diffusion all read and write access to repository data on
+  mounted volumes. **This may or may not be what you want.** It is, however, easy to
+  override by mounting your own `sudoers` file over it.
+
+  ```
+  root ALL=(ALL) SETENV: NOPASSWD: ALL
+  apache ALL=(ALL) SETENV: NOPASSWD: ALL
+  %wheel ALL=(ALL) SETENV: NOPASSWD: ALL
+  %sudo ALL=(ALL) SETENV: NOPASSWD: ALL
+  ```

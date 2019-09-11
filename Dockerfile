@@ -2,11 +2,12 @@ FROM alpine:edge
 
 # base system
 RUN apk add --no-cache \
-  git \
-  git-daemon \
   ca-certificates \
   gettext \
-  procps
+  git \
+  git-daemon \
+  procps \
+  sudo
 
 # php + app runtime
 RUN apk add --no-cache \
@@ -39,8 +40,9 @@ RUN git clone git://github.com/phacility/libphutil && \
   git clone git://github.com/phacility/arcanist && \
   git clone git://github.com/phacility/phabricator
 
-ADD preamble.php           /p/phabricator/support/preamble.php
+ADD sudoers                /etc/sudoers
 ADD phabricator-httpd.conf /etc/apache2/conf.d/phabricator.conf
+ADD preamble.php           /p/phabricator/support/preamble.php
 ADD entrypoint.sh          /p/entrypoint.sh
 ADD daemon.sh              /p/daemon.sh
 
